@@ -1,0 +1,16 @@
+.error-message {
+    @include hoverable(2, 3)
+    opacity: 1;
+    visibility: visible;
+    background-color: $secondary-color;
+    color: #fff;
+    font-weight: 600;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all $short-transition;
+    &--hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

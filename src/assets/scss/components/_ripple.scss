@@ -1,0 +1,15 @@
+.ripple {
+    &__svg {
+        &__circle {
+            &.primary {
+                fill: $primary-color;
+            }
+            &.secondary {
+                fill: $secondary-color;
+            }
+            &.red {
+                fill: red;
+            }
+        }
+    }
+}

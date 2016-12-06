@@ -1,0 +1,273 @@
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+}
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: $body-font;
+    font-size: 100%;
+    background-color: $background-color;
+    color: $text-color;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+}
+.clearfix {
+    zoom: 1;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    &:hover {
+        color: $link-hover-color;
+    }
+}
+
+@for $i from 1 through 6 {
+    h#{7 - $i} {
+        font-weight: 900;
+        text-align: center;
+        padding: 40px 0;
+        font-family: $header-font;
+        font-size: #{((1 + $i) / 2)}rem;
+    }
+}
+
+.center {
+    text-align: center;
+    &--block {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.row {
+    @extend .clearfix;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    .col {
+        float: left;
+        padding: 0 0.75rem;
+        @for $num from 1 through 12 {
+            &.s#{$num} {
+                width: (100% * ($num/12));
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+            &.so#{$num} {
+                margin-left: (100% * ($num/12));
+            }
+        }
+        @media screen and (min-width: $mobile-max - 1) {
+            @for $num from 1 through 12 {
+                &.m#{$num} {
+                    width: (100% * ($num/12));
+                    margin-left: auto;
+                    left: auto;
+                    right: auto;
+                }
+            }
+            @for $num from 1 through 12 {
+                &.mo#{$num} {
+                    margin-left: (100% * ($num/12));
+                }
+            }
+        }
+        @media screen and (min-width: $tablet-max - 1) {
+            @for $num from 1 through 12 {
+                &.l#{$num} {
+                    width: (100% * ($num/12));
+                    margin-left: auto;
+                    left: auto;
+                    right: auto;
+                }
+            }
+            @for $num from 1 through 12 {
+                &.lo#{$num} {
+                    margin-left: (100% * ($num/12));
+                }
+            }
+        }
+        @media screen and (min-width: $desktop-max - 1) {
+            @for $num from 1 through 12 {
+                &.xl#{$num} {
+                    width: (100% * ($num/12));
+                    margin-left: auto;
+                    left: auto;
+                    right: auto;
+                }
+            }
+            @for $num from 1 through 12 {
+                &.xlo#{$num} {
+                    margin-left: (100% * ($num/12));
+                }
+            }
+        }
+    }
+}
+.container {
+    margin: 0 auto;
+    max-width: $container-max-width;
+    width: 100%;
+    .row {
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
+}
+
+.hoverable {
+    @include hoverable;
+}
+
+.shadow {
+    @for $num from 1 through 5 {
+        &-#{$num} {
+            @include shadow($num);
+        }
+    }
+}
+
+strong {
+    font-weight: 600;
+}
+
+input,
+button,
+textarea,
+select {
+    appearance: none;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+input[type="button"],
+input[type="submit"],
+button {
+    cursor: pointer;
+    background-color: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+    border-bottom: 1px solid $input-border-color;
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 0 5px;
+    border-radius: 0;
+    background-color: transparent;
+    font-family: $body-font;
+    font-size: 1rem;
+    transition: border-bottom $short-transition;
+    &.empty {
+        border-color: #ccc;
+    }
+}
+
+label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $input-label-color;
+    cursor: pointer;
+    position: relative;
+    bottom: 0;
+    transition: color $short-transition, bottom $short-transition;
+    &.empty {
+        bottom: -30px;
+        color: #ccc;
+    }
+}
+
+.button {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+    color: #000;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+        color: #000;
+    }
+
+    &.primary {
+        background-color: $primary-color;
+        color: #fff;
+        &:hover {
+            color: #fff;
+        }
+    }
+    &.cancel {
+        background-color: $shadow-color;
+        color: #fff;
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &.flat {
+        @include hoverable(0, 2);
+    }
+    &.raised {
+        @include hoverable(2, 3);
+    }
+    &.round {
+        border-radius: 100%;
+    }
+    &[disabled="true"],
+    &[disabled] {
+        @include hoverable(0, 0);
+        cursor: default;
+        background-color: grey !important;
+        color: #fff !important;
+    }
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+.image-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.rounded {
+    border-radius: 5px;
+}
+
+.card {
+    @include hoverable(2);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 0 10px;
+    background-color: #fff;
+}
