@@ -86,13 +86,21 @@
     box-shadow: $shadow;
 }
 
-@mixin hoverable($n: 2, $h: 3, $top: 0, $position: relative) {
+@mixin hoverable($n: 2, $h: 3, $top: 0, $position: relative, $bottom: 0) {
     @include shadow($n);
     position: $position;
-    top: #{$top}px;
-    transition: top $short-transition, box-shadow $short-transition;
+    @if ($bottom != 0) {
+        bottom: #{$bottom}px;
+    } @else {
+        top: #{$top}px;
+    }
+    transition: top $short-transition, bottom $short-transition, box-shadow $short-transition;
     &:hover {
         @include shadow($h);
-        top: #{($top - $h)}px;
+        @if ($bottom != 0) {
+            bottom: #{($bottom + $h)}px;
+        } @else {
+            top: #{($top - $h)}px;
+        }
     }
 }

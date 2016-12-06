@@ -1,0 +1,13 @@
+.read-more {
+    &__content {
+        text-align: left;
+        overflow: hidden;
+        transition: height $long-transition;
+    }
+    &__button {
+        @extend .button;
+        @extend .button.raised;
+        @extend .button.cancel;
+        margin: 20px auto 0px;
+    }
+}

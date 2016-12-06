@@ -58,6 +58,14 @@ a {
     }
 }
 
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
 .row {
     @extend .clearfix;
     margin-left: auto;
@@ -144,6 +152,11 @@ a {
             @include shadow($num);
         }
     }
+}
+
+p {
+    padding: 0px 0px 20px;
+    text-indent: 50px;
 }
 
 strong {
