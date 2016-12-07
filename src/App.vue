@@ -128,11 +128,12 @@
     import GoogleMap from 'components/GoogleMap';
     import ReadMore from 'components/ReadMore';
     import ScrollToTop from 'components/ScrollToTop';
-
+    
+    // TODO: snow
     // TODO: Code view
-    // TODO: spinner
     // TODO: date picker
     // TODO: slider
+    // TODO: spinner
     // TODO: accordion
     export default {
         name: 'app',
