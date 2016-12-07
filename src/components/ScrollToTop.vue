@@ -10,7 +10,7 @@
             id: `scroll-to-top-${Math.random().toString(36).substring(7)}`,
             visible: false,
             scrollPos: 0,
-            timeout: false,
+            timeout: null,
         }),
         props: {
             activeOffset: {

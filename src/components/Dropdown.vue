@@ -12,8 +12,8 @@
         data: () => ({
             id: `dropdown-${Math.random().toString(36).substring(7)}`,
             status: false,
-            height: false,
-            timeout: false,
+            height: null,
+            timeout: null,
         }),
         props: {
             closeAfter: {

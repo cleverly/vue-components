@@ -9,8 +9,8 @@
         data: () => ({
             id: `error-message-${Math.random().toString(36).substring(7)}`,
             visible: false,
-            timeout: false,
-            height: 0,
+            timeout: null,
+            height: null,
         }),
         props: {
             value: {
@@ -50,7 +50,7 @@
                 this.height = '0px';
                 this.timeout = setTimeout(() => {
                     clearTimeout(this.timeout);
-                    this.height = false;
+                    this.height = null;
                     this.$emit('input', '');
                 }, 100);
             },

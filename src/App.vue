@@ -6,35 +6,35 @@
         <div class="row">
             <div class="col s12 m6 mo3 l4 lo4">
                 <h2>Form Input</h2>
-                <form-input v-model="formInputValue" label="Form Input"></form-input>
+                <form-input v-model="formInputValue" label="Form Input" />
             </div>
             <div class="col s12 m6 mo3 l4 lo4">
                 <h2>Text Box</h2>
-                <text-box v-model="textBoxValue" label="Text Box"></text-box>
+                <text-box v-model="textBoxValue" label="Text Box" />
             </div>
             <div class="col s12 m6 mo3 l4 lo4">
                 <h2>Select Input</h2>
-                <select-input v-model="selectInputValue.value" :options="selectInputValue.options" label="Select Input"></select-input>
+                <select-input v-model="selectInputValue.value" :options="selectInputValue.options" label="Select Input" />
             </div>
             <div class="col s12 m6 mo3 l4 lo4">
                 <h2>Toggle</h2>
-                <toggle v-model="toggleValue" label="Toggle" slider="true" multi="true" multi-label="Toggle2"></toggle>
+                <toggle v-model="toggleValue" label="Toggle" slider="true" multi="true" multi-label="Toggle2" />
                 <br />
-                <toggle v-model="toggleValue" label="Toggle" slider="true"></toggle>
+                <toggle v-model="toggleValue" label="Toggle" slider="true" />
                 <br />
-                <toggle v-model="toggleValue" label="Toggle"></toggle>
+                <toggle v-model="toggleValue" label="Toggle" />
                 <br />
-                <toggle v-model="radioValue" radio="true" radio-value="radio-1" label="Toggle Radio 1"></toggle>
-                <toggle v-model="radioValue" radio="true" radio-value="radio-2" label="Toggle Radio 2"></toggle>
+                <toggle v-model="radioValue" radio="true" radio-value="radio-1" label="Toggle Radio 1" />
+                <toggle v-model="radioValue" radio="true" radio-value="radio-2" label="Toggle Radio 2" />
                 <br />
-                <toggle v-model="toggleValue" label="Toggle" slider="true" multi="true" multi-label="Toggle2" disabled="true"></toggle>
+                <toggle v-model="toggleValue" label="Toggle" slider="true" multi="true" multi-label="Toggle2" disabled="true" />
                 <br />
-                <toggle v-model="toggleValue" label="Toggle" slider="true" disabled="true"></toggle>
+                <toggle v-model="toggleValue" label="Toggle" slider="true" disabled="true" />
                 <br />
-                <toggle v-model="toggleValue" label="Toggle" disabled="true"></toggle>
+                <toggle v-model="toggleValue" label="Toggle" disabled="true" />
                 <br />
-                <toggle v-model="radioValue" radio="true" radio-value="radio-1" label="Toggle Radio 1" disabled></toggle>
-                <toggle v-model="radioValue" radio="true" radio-value="radio-2" label="Toggle Radio 2" disabled></toggle>
+                <toggle v-model="radioValue" radio="true" radio-value="radio-1" label="Toggle Radio 1" disabled />
+                <toggle v-model="radioValue" radio="true" radio-value="radio-2" label="Toggle Radio 2" disabled />
             </div>
             <div class="col s12 m6 mo3 l4 lo4">
                 <ripple color="secondary">
@@ -83,14 +83,14 @@
             </div>
             <div class="col s12 m6 mo3 l4 lo4 center">
                 <h2>ErrorMessage</h2>
-                <error-message v-model="errorMessage"></error-message>
+                <error-message v-model="errorMessage" />
                 <br />
                 <a href="#!" class="button primary raised" @click.prevent="errorMessage='I Am Error!'">Make An Error</a>
                 <a href="#!" class="button cancel raised" @click.prevent="errorMessage='I Am Another Error!'">Make Another Error</a>
             </div>
             <div class="col s12 m6 mo3 l4 lo4 center">
                 <h2>Map</h2>
-                <google-map address="36 S Central, Medford OR, 97501" map-key="AIzaSyAXzYlMjV_q3m8WnXnHO41TVOyUuq5IIVk" :zoom="18" custom-marker="http://eecs.mines.edu/Courses/csci448/resources/images/app_icons/doge_icon.png"></google-map>
+                <google-map address="36 S Central, Medford OR, 97501" map-key="AIzaSyAXzYlMjV_q3m8WnXnHO41TVOyUuq5IIVk" :zoom="18" custom-marker="http://eecs.mines.edu/Courses/csci448/resources/images/app_icons/doge_icon.png" />
             </div>
         </div>
         <modal title="I Am Modal" :open="modal1State" @close="modal1State=false">

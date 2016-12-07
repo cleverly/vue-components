@@ -12,8 +12,8 @@
         data: () => ({
             id: `read-more-${Math.random().toString(36).substring(7)}`,
             expanded: false,
-            fullHeight: 0,
-            height: false,
+            fullHeight: null,
+            height: null,
         }),
         props: {
             label: {
