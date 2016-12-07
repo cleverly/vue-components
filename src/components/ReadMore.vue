@@ -1,5 +1,5 @@
 <template>
-    <div :class="`read-more ${expanded ? 'read-more--expanded' : 'read-more--compressed'}`">
+    <div :id="id" :class="`read-more ${expanded ? 'read-more--expanded' : 'read-more--compressed'}`">
         <div class="read-more__content" :style="{height}">
             <slot></slot>
         </div>
@@ -10,6 +10,7 @@
     export default {
         name: 'ReadMore',
         data: () => ({
+            id: `read-more-${Math.random().toString(36).substring(7)}`,
             expanded: false,
             fullHeight: 0,
             height: false,

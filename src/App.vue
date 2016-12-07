@@ -61,7 +61,7 @@
             </div>
             <div class="col s12 m6 mo3 l4 lo4 center">
                 <h2>DropDown</h2>
-                <dropdown :close-after="2500">
+                <dropdown :close-after="1000">
                     Dropdown Label
                     <div slot="menu">
                         <a href="#!" @click.prevent>Test 1</a>
@@ -129,9 +129,8 @@
     import ReadMore from 'components/ReadMore';
     import ScrollToTop from 'components/ScrollToTop';
 
-    // UA-23658547-7
-    // TODO: spinner
     // TODO: Code view
+    // TODO: spinner
     // TODO: date picker
     // TODO: slider
     // TODO: accordion
@@ -165,8 +164,8 @@
             GoogleMap,
             ReadMore,
             ScrollToTop,
-        }
-    }
+        },
+    };
 </script>
 
 <style lang="scss">

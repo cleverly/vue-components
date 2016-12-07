@@ -1,5 +1,5 @@
 <template>
-    <div @mouseout="setStyles" @click.stop="ripple" class="ripple" :style="outerStyle">
+    <div :id="id" @mouseout="setStyles" @click.stop="ripple" class="ripple" :style="outerStyle">
         <svg class="ripple__svg" v-if="animating" :style="`${style} opacity: ${opacity}`">
             <circle :class="`ripple__svg__circle ${color}`" :cx="cx" :cy="cy" :r="r"></circle>
         </svg>
@@ -10,6 +10,7 @@
     export default {
         name: 'Ripple',
         data: () => ({
+            id: `ripple-${Math.random().toString(36).substring(7)}`,
             animating: false,
             animation: false,
             cx: 0,

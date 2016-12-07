@@ -1,5 +1,5 @@
 <template>
-    <div :class="`scroll-to-top ${visible ? 'scroll-to-top--visible' : 'scroll-to-top--hidden'}`" @click="toTop">
+    <div :id="id" :class="`scroll-to-top ${visible ? 'scroll-to-top--visible' : 'scroll-to-top--hidden'}`" @click="toTop">
         <slot></slot>
     </div>
 </template>
@@ -7,6 +7,7 @@
     export default {
         name: 'ScrollToTop',
         data: () => ({
+            id: `scroll-to-top-${Math.random().toString(36).substring(7)}`,
             visible: false,
             scrollPos: 0,
             timeout: false,

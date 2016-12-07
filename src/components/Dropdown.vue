@@ -1,7 +1,7 @@
 <template>
-    <div :id="id" :class="`dropdown ${status ? 'dropdown--open' : 'dropdown--closed'}`" @click="toggleState" @mouseout="autoClose">
+    <div :id="id" :class="`dropdown ${status ? 'dropdown--open' : 'dropdown--closed'}`" @click="toggleState" @mouseover="cancelClose" @mouseout="autoClose">
         <slot></slot>
-        <div class="dropdown__menu" :style="{height}">
+        <div class="dropdown__menu" :style="{height}" @mouseover="cancelClose" @mouseout="autoClose">
             <slot name="menu"></slot>
         </div>
     </div>
@@ -38,6 +38,9 @@
                         }, this.closeAfter);
                     }
                 }
+            },
+            cancelClose() {
+                clearTimeout(this.timeout);
             },
         },
         mounted() {

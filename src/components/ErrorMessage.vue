@@ -1,5 +1,5 @@
 <template>
-    <div :id="id" :class="`error-message ${visible ? '' : 'error-message--hidden'}`" :style="`${height ? `height: ${height}` : ''}`" @click="clearErrorNow">
+    <div :id="id" :class="`error-message ${visible ? '' : 'error-message--hidden'}`" :style="{height}" @click="clearErrorNow">
         {{value}}
     </div>
 </template>
