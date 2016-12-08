@@ -94,6 +94,10 @@
                 <a href="#!" class="button cancel raised" @click.prevent="errorMessage='I Am Another Error!'">Make Another Error</a>
             </div>
             <div class="col s12 m8 mo2 center">
+                <h2>ToolTip Directive</h2>
+                <div v-tooltip="'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, voluptas fuga odio quisquam temporibus dolores amet suscipit ipsa earum laborum eos animi atque unde, aperiam laudantium autem ut laboriosam tenetur nobis, neque eaque natus! Quia facere deserunt, laboriosam, reiciendis recusandae saepe nostrum voluptas cumque asperiores, ea, in. Suscipit iusto ipsum quibusdam soluta, ducimus blanditiis sed ex corrupti fuga officiis commodi aperiam odit beatae amet eaque cum aliquam similique iure assumenda voluptatibus animi eligendi cupiditate vitae nobis repellat? Facilis error inventore velit debitis adipisci iste in quisquam facere similique, amet deleniti nemo veritatis, autem. Modi ad aut quis, incidunt harum, tempore dolor est quia repudiandae eos laboriosam velit unde totam sit, possimus, placeat eius perspiciatis nihil consequatur vitae omnis id. Doloribus quas, architecto voluptate ut atque consectetur. Dolorem sapiente quo quidem. A aspernatur, quibusdam, architecto soluta in corrupti placeat laborum nam totam natus. Libero, facere, quibusdam. Quia optio possimus incidunt magni natus laborum voluptatem quibusdam neque, officiis ut consequuntur consequatur excepturi vel, nobis perspiciatis provident a. Tenetur magni, corrupti iste quas! A, animi voluptatibus totam? Quod hic quibusdam, eligendi obcaecati tempora blanditiis quam accusantium, est harum expedita quae omnis distinctio dolore. Veniam, perferendis! Culpa nisi iure accusantium, odio atque perferendis quo!'">Hover Me!</div>
+            </div>
+            <div class="col s12 m8 mo2 center">
                 <h2>Map</h2>
                 <google-map address="36 S Central, Medford OR, 97501" map-key="AIzaSyAXzYlMjV_q3m8WnXnHO41TVOyUuq5IIVk" :zoom="18" custom-marker="http://eecs.mines.edu/Courses/csci448/resources/images/app_icons/doge_icon.png" />
             </div>
@@ -137,6 +141,7 @@
     import ScrollToTop from 'components/ScrollToTop';
     import Accordion from 'components/Accordion';
     import Snow from 'components/Snow';
+    import './directives/ToolTip.js';
 
     // TODO: Code view
     // TODO: date picker

@@ -285,6 +285,27 @@ label {
     background-color: #fff;
 }
 
+.tooltip {
+    @include shadow(2);
+    top: -10px !important;
+    padding: 5px 10px;
+    width: auto;
+    max-width: 100%;
+    text-align: left;
+    background-color: $shadow-color;
+    color: #fff;
+    transition: opacity $short-transition, visiblity $short-transition, transform $short-transition;
+    border-radius: 5px;
+    &:after {
+        @include css-triangle(down, 8, $shadow-color);
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 8px);
+    }
+}
+
 
 #app {
     background-color: white;
