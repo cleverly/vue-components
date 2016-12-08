@@ -1,3 +1,49 @@
+<style lang="scss" scoped>
+    .accordion-item {
+        &__header {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        &__content {
+            padding: 20px;
+            &-container {
+                transition: height 250ms;
+                overflow: hidden;
+                background-color: #fff;
+                color: #000;
+            }
+        }
+        &--open {
+            .accordion-item {
+                &__header {}
+                &__content {
+                    &-container {}
+                }
+            }
+        }
+        &--closed {
+            .accordion-item {
+                &__header {}
+                &__content {
+                    &-container {
+                        height: 0 !important;
+                    }
+                }
+            }
+        }
+        &:last-child {
+            .accordion-item {
+                &__content,
+                &__content-container {
+                    border-bottom-right-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                }
+            }
+        }
+    }
+</style>
 <template>
     <div :id="id" :class="`accordion-item ${open ? 'accordion-item--open' : 'accordion-item--closed'}`">
         <div class="accordion-item__header" @click="onInput">

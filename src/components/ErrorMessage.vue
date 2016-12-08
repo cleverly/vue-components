@@ -1,3 +1,25 @@
+<style lang="scss" scoped>
+    @import '~scss/vars';
+    @import '~scss/mixins';
+    $secondary-color: #CF6163;
+    $short-transition: 250ms;
+    .error-message {
+        @include hoverable(2, 3)
+        opacity: 1;
+        visibility: visible;
+        background-color: $secondary-color;
+        color: #fff;
+        font-weight: 600;
+        font-size: 2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all $short-transition;
+        &--hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+</style>
 <template>
     <div :id="id" :class="`error-message ${visible ? '' : 'error-message--hidden'}`" :style="{height}" @click="clearErrorNow">
         {{value}}

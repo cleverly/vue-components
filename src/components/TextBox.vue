@@ -1,3 +1,11 @@
+<style lang="scss" scoped>
+    .text-box {
+        textarea {
+            resize: none;
+            overflow-y: hidden;
+        }
+    }
+</style>
 <template>
     <div class="text-box">
         <label :for="id" v-if="label" :class="hasValue">{{label}}</label>

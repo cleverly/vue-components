@@ -1,3 +1,16 @@
+<style lang="scss" scoped>
+    @import '~scss/vars';
+    @import '~scss/mixins';
+    .google-map {
+        &__image {
+            @include hoverable(2, 4);
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    }
+</style>
 <template>
     <div :id="id" v-if="valid" class="google-map">
         <img :src="mapSrc" alt="Google Map" class="google-map__image">

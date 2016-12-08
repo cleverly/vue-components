@@ -1,7 +1,0 @@
-.google-map {
-    &__image {
-        @extend .image-responsive;
-        @extend .rounded;
-        @include hoverable(2, 4);
-    }
-}

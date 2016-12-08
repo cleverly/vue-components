@@ -1,3 +1,37 @@
+<style lang="scss" scoped>
+    $primary-color: #F17269;
+    $secondary-color: #CF6163;
+    .ripple {
+        display: inline;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        &__svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            &__circle {
+                fill-opacity: 0.1;
+                &.white {
+                    fill: #fff;
+                }
+                &.primary {
+                    fill: $primary-color;
+                }
+                &.secondary {
+                    fill: $secondary-color;
+                }
+                &.red {
+                    fill: red;
+                }
+            }
+        }
+    }
+</style>
 <template>
     <div :id="id" @mouseout="setStyles" @click.stop="ripple" class="ripple" :style="outerStyle">
         <svg class="ripple__svg" v-if="animating" :style="`${style} opacity: ${opacity}`">
@@ -148,26 +182,3 @@
         }
     };
 </script>
-<style lang="scss" scoped>
-    .ripple {
-        display: inline;
-        position: relative;
-        user-select: none;
-        cursor: pointer;
-        &__svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            &__circle {
-                fill-opacity: 0.1;
-                &.white {
-                    fill: #fff;
-                }
-            }
-        }
-    }
-</style>
