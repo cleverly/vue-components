@@ -12,6 +12,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "raf": "^3.3.0",
     "vue": "^2.1.0"
   },
   "devDependencies": {

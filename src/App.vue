@@ -1,22 +1,20 @@
 <template>
     <div id="app">
-        <scroll-to-top>
-        </scroll-to-top>
         <h1>Vue Components</h1>
         <div class="row">
-            <div class="col s12 m6 mo3 l4 lo4">
+            <div class="col s12 m6 mo3">
                 <h2>Form Input</h2>
                 <form-input v-model="formInputValue" label="Form Input" />
             </div>
-            <div class="col s12 m6 mo3 l4 lo4">
+            <div class="col s12 m6 mo3">
                 <h2>Text Box</h2>
                 <text-box v-model="textBoxValue" label="Text Box" />
             </div>
-            <div class="col s12 m6 mo3 l4 lo4">
+            <div class="col s12 m6 mo3">
                 <h2>Select Input</h2>
                 <select-input v-model="selectInputValue.value" :options="selectInputValue.options" label="Select Input" />
             </div>
-            <div class="col s12 m6 mo3 l4 lo4">
+            <div class="col s12 m6 mo3">
                 <h2>Toggle</h2>
                 <toggle v-model="toggleValue" label="Toggle" slider="true" multi="true" multi-label="Toggle2" />
                 <br />
@@ -36,7 +34,7 @@
                 <toggle v-model="radioValue" radio="true" radio-value="radio-1" label="Toggle Radio 1" disabled />
                 <toggle v-model="radioValue" radio="true" radio-value="radio-2" label="Toggle Radio 2" disabled />
             </div>
-            <div class="col s12 m6 mo3 l4 lo4">
+            <div class="col s12 m6 mo3">
                 <ripple color="secondary">
                     <h2>Ripple</h2>
                 </ripple>
@@ -54,12 +52,12 @@
                     </ripple>
                 </div>
             </div>
-            <div class="col s12 m6 mo3 l4 lo4 center">
+            <div class="col s12 m8 mo2 center">
                 <h2>Modal</h2>
                 <a class="button primary raised" href="#!" @click.prevent="modal1State=true">Open Modal</a>
                 <a class="button cancel raised" href="#!" @click.prevent="modal2State=true">With Buttons</a>
             </div>
-            <div class="col s12 m6 mo3 l4 lo4 center">
+            <div class="col s12 m8 mo2 center">
                 <h2>DropDown</h2>
                 <dropdown :close-after="1000">
                     Dropdown Label
@@ -71,7 +69,7 @@
                     </div>
                 </dropdown>
             </div>
-            <div class="col s12 m6 mo3 l4 lo4 center">
+            <div class="col s12 m8 mo2 center">
                 <h2>Read More</h2>
                 <read-more class="card" :compressed-height="168">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos exercitationem dolores. Deserunt odit quod, officiis, aut in, dolore ad voluptas aliquid voluptates pariatur quae laborum. Quos illo expedita ex, sed quisquam porro hic labore, sint excepturi facere. Eligendi dolorum, enim ullam quod minima temporibus, nam quo. Et animi, veniam molestiae. Sunt ex ullam est quaerat commodi molestias. Amet aliquam dicta fugit eaque maxime minima, libero, voluptates quod reiciendis placeat earum maiores. Vitae sed quia quam molestiae quos eaque nobis, consequuntur accusamus est illo explicabo dignissimos qui pariatur laudantium facilis nisi sequi, sunt quod quaerat repudiandae placeat officiis? Aliquid commodi quis dolore quo animi, et, ullam aspernatur totam. Eligendi architecto animi, exercitationem error consectetur. Tempora architecto neque quos reiciendis quod suscipit fuga deleniti temporibus voluptate. Eum adipisci magnam delectus corporis culpa quo voluptate nesciunt eligendi esse ad hic perspiciatis aliquam mollitia, voluptates accusantium officia suscipit quis, distinctio deserunt dolorem quaerat saepe doloremque. Dicta quasi, alias doloribus nesciunt nulla cupiditate! Est reiciendis non, labore, accusantium numquam nobis? Odit excepturi, modi numquam, autem voluptatum ratione doloribus asperiores rem totam commodi at, repudiandae earum fugit reprehenderit quam accusamus esse doloremque ad delectus quae unde quis amet. Velit, earum recusandae ut consequatur, minus laboriosam.</p>
@@ -81,21 +79,21 @@
                     <p>Eaque eos unde at nisi ad cumque ut, animi nam consequuntur, adipisci minus. Adipisci recusandae soluta minus, veniam nihil asperiores ipsum! Sequi consequuntur aperiam quae, autem nihil odit a accusantium mollitia, doloremque. Dolore ullam voluptate, quibusdam non ut facilis odio saepe accusantium, voluptatem aliquam suscipit libero expedita temporibus sint! Earum totam eaque quaerat, perspiciatis adipisci dicta, quas rem in hic pariatur consequatur alias, sed impedit! Facilis quod porro, amet? Voluptates numquam minima dolor fugit placeat mollitia id! Numquam est molestiae corporis natus deserunt laboriosam, sequi hic odio nisi. Explicabo corporis est perferendis nisi, nobis. Esse aliquid, quos amet et nihil corporis nulla doloremque in commodi dicta doloribus itaque, exercitationem quam nostrum eaque praesentium, nobis odio. Quisquam impedit vitae deleniti commodi, expedita repellendus aperiam, quod, eveniet saepe dolorem sapiente deserunt tempora veniam ducimus possimus consequuntur in illum. Consectetur, facilis autem, obcaecati, aliquid velit nam illum inventore at, eaque est modi doloribus quidem eos maxime officiis. Delectus quasi alias natus maiores harum consequuntur ipsam ad incidunt voluptatem quas assumenda vero at cum quibusdam, ipsum, sapiente quae quaerat quidem eligendi possimus qui, voluptatibus beatae laudantium saepe esse! Qui, architecto hic. Aliquam quos quo nostrum porro velit, dolore perferendis assumenda, iure omnis fugit accusamus!</p>
                 </read-more>
             </div>
-            <div class="col s12 m6 mo3 l4 lo4 center">
+            <div class="col s12 m8 mo2 center">
                 <h2>Accordion</h2>
                 <h3>Normal</h3>
                 <accordion :items="accordionItems" />
                 <h3>Multi Open</h3>
                 <accordion :items="accordionItems" :multiOpen="true" />
             </div>
-            <div class="col s12 m6 mo3 l4 lo4 center">
+            <div class="col s12 m8 mo2 center">
                 <h2>ErrorMessage</h2>
                 <error-message v-model="errorMessage" />
                 <br />
                 <a href="#!" class="button primary raised" @click.prevent="errorMessage='I Am Error!'">Make An Error</a>
                 <a href="#!" class="button cancel raised" @click.prevent="errorMessage='I Am Another Error!'">Make Another Error</a>
             </div>
-            <div class="col s12 m6 mo3 l4 lo4 center">
+            <div class="col s12 m8 mo2 center">
                 <h2>Map</h2>
                 <google-map address="36 S Central, Medford OR, 97501" map-key="AIzaSyAXzYlMjV_q3m8WnXnHO41TVOyUuq5IIVk" :zoom="18" custom-marker="http://eecs.mines.edu/Courses/csci448/resources/images/app_icons/doge_icon.png" />
             </div>
@@ -120,6 +118,8 @@
                 </ripple>
             </div>
         </modal>
+        <scroll-to-top></scroll-to-top>
+        <snow />
     </div>
 </template>
 
@@ -136,8 +136,8 @@
     import ReadMore from 'components/ReadMore';
     import ScrollToTop from 'components/ScrollToTop';
     import Accordion from 'components/Accordion';
+    import Snow from 'components/Snow';
 
-    // TODO: snow
     // TODO: Code view
     // TODO: date picker
     // TODO: slider
@@ -196,6 +196,7 @@
             ReadMore,
             ScrollToTop,
             Accordion,
+            Snow,
         },
     };
 </script>
