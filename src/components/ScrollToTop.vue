@@ -37,13 +37,14 @@
     </div>
 </template>
 <script>
+    import raf from 'raf';
     export default {
         name: 'ScrollToTop',
         data: () => ({
             id: `scroll-to-top-${Math.random().toString(36).substring(7)}`,
             visible: false,
             scrollPos: 0,
-            timeout: null,
+            raf: null,
         }),
         props: {
             activeOffset: {
@@ -53,10 +54,6 @@
             scrollAmount: {
                 type: Number,
                 default: 50,
-            },
-            scrollDelay: {
-                type: Number,
-                default: 10,
             },
         },
         watch: {
@@ -70,15 +67,18 @@
         },
         methods: {
             toTop() {
-                clearTimeout(this.timeout);
+                raf.cancel(this.raf);
                 if (this.scrollPos > 0) {
                     window.scrollBy(0, -this.scrollAmount);
-                    this.timeout = setTimeout(this.toTop, this.scrollDelay);
+                    this.raf = raf(this.toTop);
                 } else {
-                    clearTimeout(this.timeout);
+                    raf.cancel(this.raf);
                 }
             },
             scrollHandler() {
+                if (this.scrollPos - document.body.scrollTop < (this.scrollAmount - 5)) {
+                    raf.cancel(this.raf);
+                }
                 this.scrollPos = document.body.scrollTop;
             },
         },

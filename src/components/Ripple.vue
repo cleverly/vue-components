@@ -14,6 +14,7 @@
             right: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
             &__circle {
                 fill-opacity: 0.1;
                 &.white {
@@ -33,7 +34,7 @@
     }
 </style>
 <template>
-    <div :id="id" @mouseout="setStyles" @click.stop="ripple" class="ripple" :style="outerStyle">
+    <div :id="id" @mouseout="setStyles" @click="ripple" class="ripple" :style="outerStyle">
         <svg class="ripple__svg" v-if="animating" :style="`${style} opacity: ${opacity}`">
             <circle :class="`ripple__svg__circle ${color}`" :cx="cx" :cy="cy" :r="r"></circle>
         </svg>
@@ -41,12 +42,13 @@
     </div>
 </template>
 <script>
+    import raf from 'raf';
     export default {
         name: 'Ripple',
         data: () => ({
             id: `ripple-${Math.random().toString(36).substring(7)}`,
             animating: false,
-            animation: false,
+            raf: false,
             cx: 0,
             cy: 0,
             r: 0,
@@ -64,10 +66,6 @@
                 type: Number,
                 default: 4,
             },
-            interval: {
-                type: Number,
-                default: 1,
-            },
         },
         methods: {
             name: 'ripple',
@@ -77,12 +75,12 @@
                 this.cy = e.offsetY;
                 this.r = 0;
                 if (this.animating) {
-                    clearInterval(this.animation);
+                    raf.cancel(this.raf);
                     this.animating = false;
                 }
                 this.opacity = 1;
                 this.animating = true;
-                this.animation = setInterval(this.rippleAnimation, this.interval);
+                this.raf = raf(this.rippleAnimation);
 
             },
             setStyles() {
@@ -100,6 +98,7 @@
                     let marginRight = computedStyles.marginRight;
                     let marginBottom = computedStyles.marginBottom;
                     let marginLeft = computedStyles.marginLeft;
+                    let float = computedStyles.float;
                     if (display === 'inline') {
                         throw new Error('Child of ripple may not be inline');
                     }
@@ -118,6 +117,7 @@
                         margin-left: ${display !== 'block' ? marginLeft : 'initial'};
                         max-width: ${parseInt(width, 10) + 1}px;
                         max-height: ${parseInt(height, 10) + 1}px;
+                        float: none;
                         ${base}
                     `;
                     if (!this.outerStyle) {
@@ -126,6 +126,7 @@
                             margin-right: ${marginRight};
                             margin-bottom: ${marginBottom};
                             margin-left: ${marginLeft};
+                            float: ${float || 'none'};
                             ${base}
                         `;
                     }
@@ -137,18 +138,20 @@
                 let height = box.scrollHeight;
                 let maxRad = Math.ceil(Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)));
                 if (this.r >= maxRad) {
-                    clearInterval(this.animation);
-                    this.animation = setInterval(this.fadeAnimation, this.interval);
+                    raf.cancel(this.raf);
+                    this.raf = raf(this.fadeAnimation);
                 } else {
                     this.r += this.step;
+                    this.raf = raf(this.rippleAnimation);
                 }
             },
             fadeAnimation() {
                 if (this.opacity <= 0) {
-                    clearInterval(this.animation);
+                    raf.cancel(this.raf);
                     this.animating = false;
                 } else {
-                    this.opacity -= this.step / 100;
+                    this.opacity -= 0.05;
+                    this.raf = raf(this.rippleAnimation);
                 }
             },
         },

@@ -39,11 +39,27 @@ a {
     }
 }
 
+pre {
+    @include shadow(2);
+    overflow: auto;
+    padding: 10px;
+    background-color: $shadow-color;
+    color: #fff;
+    border-radius: 5px;
+    transition: box-shadow $short-transition, top $short-transition, margin $short-transition;
+    &:hover {
+        margin-left: calc(-50% - 0.75rem);
+        margin-right: calc(-50% - 0.75rem);
+    }
+    code {
+    }
+}
+
 @for $i from 1 through 6 {
     h#{7 - $i} {
         font-weight: 900;
         text-align: center;
-        padding: 40px 0;
+        margin: 40px 0;
         font-family: $header-font;
         font-size: #{((1 + $i) / 2)}rem;
     }
@@ -286,30 +302,126 @@ label {
 }
 
 .tooltip {
-    @include shadow(2);
-    top: -10px !important;
-    padding: 5px 10px;
-    width: auto;
-    max-width: 100%;
-    text-align: left;
-    background-color: $shadow-color;
-    color: #fff;
-    transition: opacity $short-transition, visiblity $short-transition, transform $short-transition;
-    border-radius: 5px;
-    &:after {
-        @include css-triangle(down, 8, $shadow-color);
-        content: '';
+    position: relative;
+    &__text {
         position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 8px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity $short-transition, visibility $short-transition;
+    }
+    &--active {
+        .tooltip__text {
+            opacity: 1;
+            visibility: visible;
+        }
     }
 }
 
 
 #app {
-    background-color: white;
-    overflow: auto;
-    max-width: $container-max-width;
-    margin: 0 auto;
+    @extend .container;
+    @include shadow(5);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    z-index: 100;
+    main,
+    footer {
+        padding: 10px;
+    }
+    header {
+        .nav {
+            @extend .container;
+            @include shadow(3);
+            background-color: $primary-color;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: $nav-height;
+            z-index: 2000;
+            a {
+                line-height: $nav-height;
+                display: block;
+                height: 60px;
+                padding: 0 10px;
+                color: #fff;
+                float: left;
+                transition: background-color $short-transition;
+                &:not(.brand) {
+                    &:hover,
+                    &.router-link-active {
+                        background-color: $secondary-color;
+                    }
+                }
+            }
+            .dropdown {
+                @include hoverable(0, 0);
+                padding: 0;
+                line-height: $nav-height;
+                height: $nav-height;
+                border-radius: 0;
+                border-bottom: 0;
+                display: block;
+                float: left;
+                transition: background-color $short-transition;
+                .ripple > div {
+                    padding: 0 10px;
+                }
+                &--open,
+                &:hover {
+                    background-color: $secondary-color;
+                }
+                &__menu {
+                    @include shadow(0);
+                    background-color: transparent;
+                    top: 100%;
+                    border-top: 1px solid #fff;
+                    a {
+                        background-color: $shadow-color;
+                        float: none;
+                        display: block;
+
+                        &:hover,
+                        &.router-link-active {
+                            background-color: $primary-color;
+                        }
+                    }
+                }
+            }
+            .brand {
+                font-weight: 900;
+                font-size: 2rem;
+            }
+            &--fixed {
+                height: $nav-height;
+            }
+            @include multi-mq(mobile, tablet) {
+                height: $nav-height * 2;
+                .brand {
+                    float: none;
+                    text-align: center;
+                }
+                &--fixed {
+                    height: $nav-height * 2;
+                }
+            }
+        }
+    }
+    main {
+        flex: 1 0 auto;
+        background-color: #fff;
+    }
+    footer {
+        background-color: $shadow-color;
+        color: #fff;
+        text-align: center;
+        img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+    }
 }

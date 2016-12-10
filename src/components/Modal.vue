@@ -12,7 +12,7 @@
         left: 0;
         right: 0;
         background-color: rgba(0,0,0,0.5);
-        z-index: 1000;
+        z-index: 5000;
         transition: opacity $long-transition, visibility $long-transition;
         &__close {
             @include hoverable($position: absolute, $top: 5);

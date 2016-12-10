@@ -65,14 +65,17 @@
                 }
                 raf(this.draw)
             },
+            resize() {
+                this.width = this.$el.scrollWidth;
+                this.height = this.$el.scrollHeight;
+                this.$el.width = this.width;
+                this.$el.height = this.height;
+            }
         },
         mounted() {
-            let canvas = this.$el;
-            this.ctx = canvas.getContext('2d');
-            this.width = window.innerWidth;
-            this.height = window.innerHeight;
-            canvas.width = this.width;
-            canvas.height = this.height;
+            this.ctx = this.$el.getContext('2d');
+            this.resize();
+            window.addEventListener('resize', this.resize);
             for (let i = 0; i < this.maxParticles; i++) {
                 this.particles.push({
                     x: Math.random() * this.width,
@@ -83,6 +86,9 @@
             }
             raf(this.draw);
         },
+        destroyed() {
+            window.removeEventListener('resize', this.resize);
+        }
     };
 </script>
 <style lang="scss" scoped>
@@ -96,6 +102,6 @@
         bottom: 0;
         width: 100%;
         height: 100%;
-        z-index: 0;
+        z-index: -1;
     }
 </style>

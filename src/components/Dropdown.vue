@@ -21,8 +21,8 @@
         transition: border-color $short-transition, border-radius $short-transition, box-shadow $short-transition, top $short-transition, background-color $short-transition, color $short-transition;
         &__menu {
             position: absolute;
+            min-width: 100%;
             top: calc(100% + 1px);
-            width: 100%;
             left: 0;
             visibility: visible;
             overflow: hidden;
@@ -32,6 +32,7 @@
             a {
                 padding: 20px;
                 display: block;
+                white-space: nowrap;
                 color: #fff;
                 &:hover {
                     background-color: $primary-color;
@@ -110,7 +111,7 @@
             if (!this.$slots.menu) {
                 throw new TypeError('Please add itemts to the dropdown with slot="menu" directive.');
             }
-            this.height = `${this.$slots.menu[0].elm.clientHeight}px`;
+            this.height = `${this.$slots.menu[0].elm.scrollHeight}px`;
         },
     };
 </script>

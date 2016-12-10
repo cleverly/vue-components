@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import settings from '../settings.json';
+import { router } from './router';
+
 if (settings) {
     if (!settings.productionUrl) {
         throw new TypeError('productionUrl is a required setting.');
@@ -17,5 +19,6 @@ if (settings) {
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
+    router,
     render: h => h(App)
 });
