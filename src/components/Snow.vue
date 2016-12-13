@@ -17,6 +17,10 @@
                 type: Number,
                 default: 25,
             },
+            resolution: {
+                type: Number,
+                default: 1,
+            },
         },
         methods: {
             draw() {
@@ -70,8 +74,8 @@
                 raf(this.draw)
             },
             resize() {
-                this.width = this.$el.scrollWidth;
-                this.height = this.$el.scrollHeight;
+                this.width = this.$el.scrollWidth * this.resolution;
+                this.height = this.$el.scrollHeight * this.resolution;
                 this.$el.width = this.width;
                 this.$el.height = this.height;
             }
