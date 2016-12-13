@@ -25,8 +25,10 @@
                 this.ctx.beginPath();
                 for (let i = 0; i < this.maxParticles; i++) {
                     let p = this.particles[i];
-                    this.ctx.moveTo(p.x, p.y);
-                    this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+                    if (p && p.x && p.y && p.r && p.d) {
+                        this.ctx.moveTo(p.x, p.y);
+                        this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+                    }
                 }
                 this.ctx.fill();
                 this.update();
@@ -35,31 +37,33 @@
                 this.angle += 0.01;
                 for (let i = 0; i < this.maxParticles; i++) {
                     let p = this.particles[i];
-                    p.y += (Math.cos(this.angle + p.d) + 1 + p.r) / 2;
-                    p.x += Math.sin(this.angle) * 2;
+                    if (p && p.x && p.y && p.r && p.d) {
+                        p.y += (Math.cos(this.angle + p.d) + 1 + p.r) / 2;
+                        p.x += Math.sin(this.angle) * 2;
 
-                    if (p.x > this.width + 5 || p.x < -5 || p.y > this.height) {
-                        if (i % 3 > 0) {
-                            this.particles[i] = {
-                                x: Math.random() * this.width,
-                                y: -10,
-                                r: p.r,
-                                d: p.d,
-                            };
-                        } else if (Math.sin(this.angle) > 0) {
-                            this.particles[i] = {
-                                x: -5,
-                                y: Math.random() * this.height,
-                                r: p.r,
-                                d: p.d,
-                            };
-                        } else {
-                            this.particles[i] = {
-                                x: this.width + 5,
-                                y: Math.random() * this.height,
-                                r: p.r,
-                                d: p.d,
-                            };
+                        if (p.x > this.width + 5 || p.x < -5 || p.y > this.height) {
+                            if (i % 3 > 0) {
+                                this.particles[i] = {
+                                    x: Math.random() * this.width,
+                                    y: -10,
+                                    r: p.r,
+                                    d: p.d,
+                                };
+                            } else if (Math.sin(this.angle) > 0) {
+                                this.particles[i] = {
+                                    x: -5,
+                                    y: Math.random() * this.height,
+                                    r: p.r,
+                                    d: p.d,
+                                };
+                            } else {
+                                this.particles[i] = {
+                                    x: this.width + 5,
+                                    y: Math.random() * this.height,
+                                    r: p.r,
+                                    d: p.d,
+                                };
+                            }
                         }
                     }
                 }
@@ -76,6 +80,20 @@
             this.ctx = this.$el.getContext('2d');
             this.resize();
             window.addEventListener('resize', this.resize);
+            for (let i = 0; i < this.maxParticles; i++) {
+                this.particles.push({
+                    x: Math.random() * this.width,
+                    y: Math.random() * this.height,
+                    r: (Math.random() * 4) + 1,
+                    d: Math.random() * this.maxParticles,
+                });
+            }
+            raf(this.draw);
+        },
+        updated() {
+            this.resize();
+            raf.cancel(this.raf);
+            this.particles = [];
             for (let i = 0; i < this.maxParticles; i++) {
                 this.particles.push({
                     x: Math.random() * this.width,
