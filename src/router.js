@@ -5,47 +5,52 @@ import Home from './pages/Home';
 import FormComponents from './pages/FormComponents';
 import EffectComponents from './pages/EffectComponents';
 import ContentComponents from './pages/ContentComponents';
-import TooltipDirective from './pages/TooltipDirective';
+import ContentDirectives from './pages/ContentDirectives';
 
 Vue.use(VueRouter);
 
 const routes = [
     {
         name: 'Home',
+        label: 'Home',
         path: '/',
         component: Home,
         nav: true,
     },
     {
-        name: 'Forms',
-        path: '/forms',
+        name: 'FormComponents',
+        label: 'Forms',
+        path: '/components/forms',
         component: FormComponents,
         subNav: {
             dropdown: 'Components',
         },
     },
     {
-        name: 'Effects',
-        path: '/effects',
+        name: 'EffectComponents',
+        label: 'Effects',
+        path: '/components/effects',
         component: EffectComponents,
         subNav: {
             dropdown: 'Components',
         },
     },
     {
-        name: 'Content',
-        path: '/content',
+        name: 'ContentComponents',
+        label: 'Content',
+        path: '/components/content',
         component: ContentComponents,
         subNav: {
             dropdown: 'Components',
         },
     },
     {
-        name: 'Tooltip ',
-        path: '/tooltip',
-        component: TooltipDirective,
+        name: 'ContentDirectives',
+        label: 'Content',
+        path: '/directives/content',
+        component: ContentDirectives,
         subNav: {
-            dropdown: 'Direcives',
+            dropdown: 'Directives',
         },
     },
 ];

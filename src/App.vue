@@ -7,16 +7,16 @@
                         <router-link class="brand" :to="{name: 'Home'}" exact>Vue Components</router-link>
                     </ripple>
                     <ripple v-for="navItem in navItems()">
-                        <router-link :to="{name: navItem}" exact>{{navItem}}</router-link>
+                        <router-link :to="{name: navItem.name}" exact>{{navItem.label}}</router-link>
                     </ripple>
                         <dropdown v-for="dropdown in subNavItems().dropdowns" :close-after="1000">
                             <ripple>
-                                <div>
+                                <router-link tag="div" :to="{path: subNavItems().dropdownPaths[dropdown]}">
                                     {{dropdown}}
-                                </div>
+                                </router-link>
                             </ripple>
                             <div slot="menu">
-                                <router-link v-for="subNavItem in subNavItems()[dropdown]" :to="{name: subNavItem}" exact>{{subNavItem}}</router-link>
+                                <router-link v-for="subNavItem in subNavItems()[dropdown]" :to="{name: subNavItem.name}" exact>{{subNavItem.label}}</router-link>
                             </div>
                         </dropdown>
                 </nav>
@@ -54,7 +54,7 @@
                 let navItems = [];
                 routes.forEach((route) => {
                     if (route.nav) {
-                        navItems.push(route.name);
+                        navItems.push(route);
                     }
                 });
                 return navItems;
@@ -64,13 +64,18 @@
                 routes.forEach((route) => {
                     if (route.subNav) {
                         if (subNavItems[route.subNav.dropdown]) {
-                            subNavItems[route.subNav.dropdown].push(route.name);
+                            subNavItems[route.subNav.dropdown].push(route);
                         } else {
-                            subNavItems[route.subNav.dropdown] = [route.name];
+                            subNavItems[route.subNav.dropdown] = [route];
                         }
                     }
                 });
                 subNavItems.dropdowns = Object.keys(subNavItems);
+                subNavItems.dropdownPaths = {};
+                subNavItems.dropdowns.forEach((dropdown) => {
+                    let path = `/${dropdown.toLowerCase()}`;
+                    subNavItems.dropdownPaths[dropdown] = path;
+                });
                 return subNavItems;
             },
         }),

@@ -305,12 +305,48 @@ label {
 
 .tooltip {
     position: relative;
+    display: inline-block;
     &__text {
+        @include shadow(2);
         position: absolute;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
         transition: opacity $short-transition, visibility $short-transition;
+        background-color: $shadow-color;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        // white-space: nowrap;
+        display: inline-block;
+    }
+    &--top {
+        .tooltip__text {
+            top: 0;
+            left: 0;
+            transform: translate(0, calc(-100% - 5px));
+        }
+    }
+    &--right {
+        .tooltip__text {
+            top: 0;
+            left: 100%;
+            transform: translate(5px, 0);
+        }
+    }
+    &--bottom {
+        .tooltip__text {
+            top: 100%;
+            left: 0px;
+            transform: translate(0, 5px);
+        }
+    }
+    &--left {
+        .tooltip__text {
+            top: 0px;
+            left: 0;
+            transform: translate(calc(-100% - 5px), 0);
+        }
     }
     &--active {
         .tooltip__text {
@@ -371,6 +407,10 @@ label {
                 transition: background-color $short-transition;
                 .ripple > div {
                     padding: 0 10px;
+                    pointer-events: none;
+                    &.router-link-active {
+                        background-color: $secondary-color;
+                    }
                 }
                 &--open,
                 &:hover {
