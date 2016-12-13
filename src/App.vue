@@ -46,6 +46,7 @@
     // TODO: slider
     // TODO: spinner
     // TODO: tooltip
+    // TODO: tagcloud
     export default {
         name: 'app',
         data: () => ({

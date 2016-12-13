@@ -47,9 +47,11 @@ pre {
     color: #fff;
     border-radius: 5px;
     transition: box-shadow $short-transition, top $short-transition, margin $short-transition;
-    &:hover {
-        margin-left: calc(-50% - 0.75rem);
-        margin-right: calc(-50% - 0.75rem);
+    @include multi-mq(desktop, desktop-large) {
+        &:hover {
+            margin-left: calc(-50% - 0.75rem);
+            margin-right: calc(-50% - 0.75rem);
+        }
     }
     code {
     }

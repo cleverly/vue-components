@@ -3,15 +3,8 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home';
 import FormComponents from './pages/FormComponents';
-import RippleComponent from './pages/RippleComponent';
-import ModalComponent from './pages/ModalComponent';
-import AccordionComponent from './pages/AccordionComponent';
-import DropDownComponent from './pages/DropDownComponent';
-import ErrorMessageComponent from './pages/ErrorMessageComponent';
-import GoogleMapComponent from './pages/GoogleMapComponent';
-import ReadMoreComponent from './pages/ReadMoreComponent';
-import ScrollToTopComponent from './pages/ScrollToTopComponent';
-import SnowComponent from './pages/SnowComponent';
+import EffectComponents from './pages/EffectComponents';
+import ContentComponents from './pages/ContentComponents';
 import TooltipDirective from './pages/TooltipDirective';
 
 Vue.use(VueRouter);
@@ -32,73 +25,17 @@ const routes = [
         },
     },
     {
-        name: 'Ripple',
-        path: '/ripple',
-        component: RippleComponent,
+        name: 'Effects',
+        path: '/effects',
+        component: EffectComponents,
         subNav: {
             dropdown: 'Components',
         },
     },
     {
-        name: 'Modal',
-        path: '/modal',
-        component: ModalComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Accordion',
-        path: '/accordion',
-        component: AccordionComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Drop Down',
-        path: '/dropdown',
-        component: DropDownComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Error Message',
-        path: '/error-message',
-        component: ErrorMessageComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Google Map',
-        path: '/google-map',
-        component: GoogleMapComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Read More',
-        path: '/read-more',
-        component: ReadMoreComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Scroll To Top',
-        path: '/scroll-to-top',
-        component: ScrollToTopComponent,
-        subNav: {
-            dropdown: 'Components',
-        },
-    },
-    {
-        name: 'Snow',
-        path: '/snow',
-        component: SnowComponent,
+        name: 'Content',
+        path: '/content',
+        component: ContentComponents,
         subNav: {
             dropdown: 'Components',
         },
