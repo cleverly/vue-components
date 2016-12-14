@@ -414,7 +414,9 @@ label {
                 }
                 &--open,
                 &:hover {
-                    background-color: $secondary-color;
+                    .ripple > div {
+                        background-color: $secondary-color;
+                    }
                 }
                 &__menu {
                     @include shadow(0);

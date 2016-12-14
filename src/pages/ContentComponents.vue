@@ -36,6 +36,10 @@
                 <google-map address="36 S Central, Medford OR, 97501" map-key="AIzaSyAXzYlMjV_q3m8WnXnHO41TVOyUuq5IIVk" :zoom="18" custom-marker="http://eecs.mines.edu/Courses/csci448/resources/images/app_icons/doge_icon.png" />
             </div>
             <div class="col s12 m8 mo2 center">
+                <h2>Tag Cloud</h2>
+                <tag-cloud v-model="tagCloud" />
+            </div>
+            <div class="col s12 m8 mo2 center">
                 <h2>Modal</h2>
                 <a class="button primary raised" href="#!" @click.prevent="modal1State=true">Open Modal</a>
                 <a class="button cancel raised" href="#!" @click.prevent="modal2State=true">With Buttons</a>
@@ -78,6 +82,7 @@
     import Modal from 'components/Modal';
     import Ripple from 'components/Ripple';
     import ErrorMessage from 'components/ErrorMessage';
+    import TagCloud from 'components/TagCloud';
     export default {
         name: 'ContentComponents',
         data: () => ({
@@ -106,6 +111,38 @@
             modal1State: false,
             modal2State: false,
             errorMessage: '',
+            tagCloud: [
+                {
+                    label: 'Test 1',
+                    key: 'test-1',
+                    active: false,
+                },
+                {
+                    label: 'Test 2',
+                    key: 'test-2',
+                    active: false,
+                },
+                {
+                    label: 'Test 3',
+                    key: 'test-3',
+                    active: false,
+                },
+                {
+                    label: 'Test 4',
+                    key: 'test-4',
+                    active: false,
+                },
+                {
+                    label: 'Test 5',
+                    key: 'test-5',
+                    active: false,
+                },
+                {
+                    label: 'Test 6',
+                    key: 'test-6',
+                    active: false,
+                },
+            ],
         }),
         components: {
             Accordion,
@@ -115,6 +152,7 @@
             Modal,
             Ripple,
             ErrorMessage,
+            TagCloud,
         },
     };
 </script>
