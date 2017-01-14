@@ -2,6 +2,16 @@
     @import '~scss/vars';
     @import '~scss/mixins';
     .tag-cloud {
+
+        &__active-tags,
+        &__inactive-tags {
+            transition: all 500ms;
+            &.empty {
+                width: 1px;
+                height: 1px;
+                opacity: 0;
+            }
+        }
         &__active-tags {
             @include hoverable(2, 3);
             color: white;
@@ -20,6 +30,7 @@
             border-radius: 5px;
             padding: 5px;
             margin: 5px;
+            cursor: pointer;
         }
         .tag-enter-active, .tag-leave-active, .tag-move {
             transition: all 500ms;
@@ -35,12 +46,12 @@
 </style>
 <template>
     <div :id="id" class="tag-cloud">
-         <div class="tag-cloud__active-tags">
+         <div :class="{'tag-cloud__active-tags': true, empty: !active.length}">
              <transition-group name="tag">
                  <span class="tag-cloud__tag tag-cloud__tag--active" v-for="tag in active" @click="toggleTag" :data-key="tag.key" :key="tag.key">{{tag.label}}</span>
              </transition-group>
          </div>
-         <div class="tag-cloud__inactive-tags">
+         <div :class="{'tag-cloud__inactive-tags': true, empty: !inactive.length}">
              <transition-group name="tag">
                  <span class="tag-cloud__tag tag-cloud__tag--inactive" v-for="tag in inactive" @click="toggleTag" :data-key="tag.key" :key="tag.key">{{tag.label}}</span>
              </transition-group>

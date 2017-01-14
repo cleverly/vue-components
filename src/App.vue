@@ -41,12 +41,11 @@
     import ScrollToTop from 'components/ScrollToTop';
     import Snow from 'components/Snow';
 
-    // TODO: Code view
-    // TODO: date picker
-    // TODO: slider
-    // TODO: spinner
-    // TODO: tooltip
-    // TODO: tagcloud
+    // TODO: code view component
+    // TODO: date picker component
+    // TODO: slider component
+    // TODO: spinner component
+
     export default {
         name: 'app',
         data: () => ({
