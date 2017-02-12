@@ -17,6 +17,8 @@
     </div>
 </template>
 <script>
+    // Easy Styling 
+    // https://mapstyle.withgoogle.com
     export default {
         name: 'GoogleMap',
         data: () => ({
